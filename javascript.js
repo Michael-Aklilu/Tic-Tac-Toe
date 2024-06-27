@@ -1,16 +1,18 @@
-const gameBoard = function (){
+const gameBoard = function(){
+    
+    const board = [];
     const row = 3;
     const column = 3;
-    let board = [];
 
-    for(let i = 0; i<row;i++){
-        board[i] = [];
-        for(let j = 0; j<column;j++){
-            board.push(" ");
+    const populateBoard = function(){
+        for(let i = 0; i<row;i++){
+            let num = 1;
+            for(let j = 0; j<column; j++){
+
+            }
         }
     }
+    
+    
 
-    const displayBoard = () => {
-         
-    }
-}
+}();
