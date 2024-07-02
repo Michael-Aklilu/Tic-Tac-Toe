@@ -1,4 +1,81 @@
-body{
-    height:100vh;
+body {
+  height: 100vh;
+}
+h1 {
+  display: flex;
+  justify-content: center;
 }
 
+#container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10em;
+}
+#board {
+  height: 25em;
+  width: 30em;
+  border: solid 1px black;
+}
+.firstRow {
+  display: flex;
+  height: 33%;
+  width: 100%;
+  border: solid 1px black;
+}
+.secondRow {
+  display: flex;
+  height: 33%;
+  width: 100%;
+  border: solid 1px black;
+}
+.thirdRow {
+  display: flex;
+  height: 33%;
+  width: 100%;
+  border: solid 1px black;
+}
+.firstRow #col1 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.firstRow #col2 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.firstRow #col3 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.secondRow #col1 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.secondRow #col2 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.secondRow #col3 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.thirdRow #col1 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.thirdRow #col2 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
+.thirdRow #col3 {
+  width: 33%;
+  height: 100%;
+  border: solid 1px black;
+}
