@@ -43,6 +43,7 @@ const displayController = (function () {
         clickedCell.innerHTML = game.secondPlayer.marker;
         playerTurn++;
       }
+      winCheck();
     });
   };
   let playerTurn = 1;
@@ -55,6 +56,78 @@ const displayController = (function () {
     return playerTurn;
   };
 
-  return { board, playerChoice, currentPlayerTurn, playerTurn };
+  const fillBoard = function () {
+    const board = document.querySelector("#board");
+    board.addEventListener("click", (event) => {
+      const clickedCell = event.target.id;
+      switch (clickedCell) {
+        case "cell1":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[0][0] = game.secondPlayer.marker;
+          } else gameBoard.board[0][0] = game.firstPlayer.marker;
+          break;
+        case "cell2":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[0][1] = game.secondPlayer.marker;
+          } else gameBoard.board[0][1] = game.firstPlayer.marker;
+          break;
+        case "cell3":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[0][2] = game.secondPlayer.marker;
+          } else gameBoard.board[0][2] = game.firstPlayer.marker;
+          break;
+        case "cell4":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[1][0] = game.secondPlayer.marker;
+          } else gameBoard.board[1][0] = game.firstPlayer.marker;
+          break;
+        case "cell5":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[1][1] = game.secondPlayer.marker;
+          } else gameBoard.board[1][1] = game.firstPlayer.marker;
+          break;
+        case "cell6":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[1][2] = game.secondPlayer.marker;
+          } else gameBoard.board[1][2] = game.firstPlayer.marker;
+          break;
+        case "cell7":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[2][0] = game.secondPlayer.marker;
+          } else gameBoard.board[2][0] = game.firstPlayer.marker;
+          break;
+        case "cell8":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[2][1] = game.secondPlayer.marker;
+          } else gameBoard.board[2][1] = game.firstPlayer.marker;
+          break;
+        case "cell9":
+          if (currentPlayerTurn() === 1) {
+            gameBoard.board[2][2] = game.secondPlayer.marker;
+          } else gameBoard.board[2][2] = game.firstPlayer.marker;
+      }
+    });
+    winCheck();
+  };
+  const winCheck = function () {
+    if (
+      gameBoard.board[0][0] === game.firstPlayer.marker &&
+      gameBoard.board[0][1] === game.firstPlayer.marker &&
+      gameBoard.board[0][2] === game.firstPlayer.marker
+    )
+      alert("PLAYER1 WINS! GAME OVER");
+  };
+
+  return {
+    board,
+    playerChoice,
+    currentPlayerTurn,
+    playerTurn,
+    fillBoard,
+    winCheck,
+  };
 })();
+gameBoard.populateBoard();
 displayController.playerChoice();
+displayController.fillBoard();
+displayController.winCheck();
