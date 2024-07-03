@@ -1,5 +1,6 @@
 body {
   height: 100vh;
+  background-color: blueviolet;
 }
 h1 {
   display: flex;
@@ -15,6 +16,7 @@ h1 {
   height: 25em;
   width: 30em;
   border: solid 1px black;
+  text-align: center;
 }
 .firstRow {
   display: flex;
@@ -34,47 +36,47 @@ h1 {
   width: 100%;
   border: solid 1px black;
 }
-.firstRow #col1 {
+.firstRow #cell1 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.firstRow #col2 {
+.firstRow #cell2 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.firstRow #col3 {
+.firstRow #cell3 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.secondRow #col1 {
+.secondRow #cell1 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.secondRow #col2 {
+.secondRow #cell2 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.secondRow #col3 {
+.secondRow #cell3 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.thirdRow #col1 {
+.thirdRow #cell1 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.thirdRow #col2 {
+.thirdRow #cell2 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
 }
-.thirdRow #col3 {
+.thirdRow #cell3 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
