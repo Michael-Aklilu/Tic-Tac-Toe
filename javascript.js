@@ -43,7 +43,7 @@ const displayController = (function () {
         clickedCell.innerHTML = game.secondPlayer.marker;
         playerTurn++;
       }
-      winCheck();
+      resultCheck();
     });
   };
   let playerTurn = 1;
@@ -107,17 +107,54 @@ const displayController = (function () {
           } else gameBoard.board[2][2] = game.firstPlayer.marker;
       }
     });
-    winCheck();
+    resultCheck();
   };
-  const winCheck = function () {
+  const resultCheck = function () {
     const displayResult = document.querySelector("#displayResult");
+
+    for (let i = 0; i < 3; i++) {
+      if (
+        gameBoard.board[i][0] === game.firstPlayer.marker &&
+        gameBoard.board[i][1] === game.firstPlayer.marker &&
+        gameBoard.board[i][2] === game.firstPlayer.marker
+      )
+        displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
+      else if (
+        gameBoard.board[0][i] === game.firstPlayer.marker &&
+        gameBoard.board[1][i] === game.firstPlayer.marker &&
+        gameBoard.board[2][i] === game.firstPlayer.marker
+      )
+        displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
+    }
 
     if (
       gameBoard.board[0][0] === game.firstPlayer.marker &&
-      gameBoard.board[0][1] === game.firstPlayer.marker &&
-      gameBoard.board[0][2] === game.firstPlayer.marker
+      gameBoard.board[1][1] === game.firstPlayer.marker &&
+      gameBoard.board[2][2] === game.firstPlayer.marker
     )
       displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
+
+    for (let i = 0; i < 3; i++) {
+      if (
+        gameBoard.board[i][0] === game.secondPlayer.marker &&
+        gameBoard.board[i][1] === game.secondPlayer.marker &&
+        gameBoard.board[i][2] === game.secondPlayer.marker
+      )
+        displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
+      else if (
+        gameBoard.board[0][i] === game.secondPlayer.marker &&
+        gameBoard.board[1][i] === game.secondPlayer.marker &&
+        gameBoard.board[2][i] === game.secondPlayer.marker
+      )
+        displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
+    }
+
+    if (
+      gameBoard.board[0][0] === game.secondPlayer.marker &&
+      gameBoard.board[1][1] === game.secondPlayer.marker &&
+      gameBoard.board[2][2] === game.secondPlayer.marker
+    )
+      displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
   };
 
   return {
@@ -126,10 +163,10 @@ const displayController = (function () {
     currentPlayerTurn,
     playerTurn,
     fillBoard,
-    winCheck,
+    resultCheck,
   };
 })();
 gameBoard.populateBoard();
 displayController.playerChoice();
 displayController.fillBoard();
-displayController.winCheck();
+displayController.resultCheck();
