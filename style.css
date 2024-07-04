@@ -10,7 +10,7 @@ h1 {
 #container {
   display: flex;
   justify-content: center;
-  margin-top: 10em;
+  margin-top: 5em;
 }
 #board {
   height: 25em;
@@ -80,4 +80,12 @@ h1 {
   width: 33%;
   height: 100%;
   border: solid 1px black;
+}
+#displayResult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5em;
+  font-size: 1.5em;
+  font-weight: 900;
 }
