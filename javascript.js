@@ -110,12 +110,14 @@ const displayController = (function () {
     winCheck();
   };
   const winCheck = function () {
+    const displayResult = document.querySelector("#displayResult");
+
     if (
       gameBoard.board[0][0] === game.firstPlayer.marker &&
       gameBoard.board[0][1] === game.firstPlayer.marker &&
       gameBoard.board[0][2] === game.firstPlayer.marker
     )
-      alert("PLAYER1 WINS! GAME OVER");
+      displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
   };
 
   return {
