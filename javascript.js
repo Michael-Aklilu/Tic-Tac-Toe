@@ -134,58 +134,69 @@ const gameLogic = (function () {
         gameBoard.board[i][0] === game.firstPlayer.marker &&
         gameBoard.board[i][1] === game.firstPlayer.marker &&
         gameBoard.board[i][2] === game.firstPlayer.marker
-      )
+      ) {
         displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-      else if (
+        endGame();
+      } else if (
         gameBoard.board[0][i] === game.firstPlayer.marker &&
         gameBoard.board[1][i] === game.firstPlayer.marker &&
         gameBoard.board[2][i] === game.firstPlayer.marker
-      )
+      ) {
         displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
+        endGame();
+      }
     }
 
     if (
       gameBoard.board[0][0] === game.firstPlayer.marker &&
       gameBoard.board[1][1] === game.firstPlayer.marker &&
       gameBoard.board[2][2] === game.firstPlayer.marker
-    )
+    ) {
       displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-
+      endGame();
+    }
     if (
       gameBoard.board[0][2] === game.firstPlayer.marker &&
       gameBoard.board[1][1] === game.firstPlayer.marker &&
       gameBoard.board[2][0] === game.firstPlayer.marker
-    )
+    ) {
       displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-
+      endGame();
+    }
     for (let i = 0; i < 3; i++) {
       if (
         gameBoard.board[i][0] === game.secondPlayer.marker &&
         gameBoard.board[i][1] === game.secondPlayer.marker &&
         gameBoard.board[i][2] === game.secondPlayer.marker
-      )
+      ) {
         displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
-      else if (
+        endGame();
+      } else if (
         gameBoard.board[0][i] === game.secondPlayer.marker &&
         gameBoard.board[1][i] === game.secondPlayer.marker &&
         gameBoard.board[2][i] === game.secondPlayer.marker
-      )
+      ) {
         displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
+        endGame();
+      }
     }
 
     if (
       gameBoard.board[0][0] === game.secondPlayer.marker &&
       gameBoard.board[1][1] === game.secondPlayer.marker &&
       gameBoard.board[2][2] === game.secondPlayer.marker
-    )
+    ) {
       displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
-
+      endGame();
+    }
     if (
       gameBoard.board[0][2] === game.secondPlayer.marker &&
       gameBoard.board[1][1] === game.secondPlayer.marker &&
       gameBoard.board[2][0] === game.secondPlayer.marker
-    )
+    ) {
       displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
+      endGame();
+    }
   };
 
   const drawCheck = function () {
@@ -196,6 +207,11 @@ const gameLogic = (function () {
       );
     });
     if (isDraw) displayResult.textContent = "GAME OVER! IT'S A DRAW!";
+  };
+
+  const endGame = function () {
+    const board = document.querySelector("#board");
+    board.removeEventListener("click");
   };
 
   return {
