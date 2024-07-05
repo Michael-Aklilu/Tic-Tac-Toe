@@ -34,6 +34,7 @@ const displayController = (function () {
     const board = document.querySelector("#board");
     board.addEventListener("click", (event) => {
       let clickedCell = event.target;
+      if (clickedCell.innerHTML !== "") return;
       if (currentPlayerTurn() === 1) {
         clickedCell.style.fontSize = "100px";
         clickedCell.innerHTML = game.firstPlayer.marker;
@@ -43,8 +44,7 @@ const displayController = (function () {
         clickedCell.innerHTML = game.secondPlayer.marker;
         playerTurn++;
       }
-      winCheck();
-      drawCheck();
+      if (!winCheck()) drawCheck();
     });
   };
   let playerTurn = 1;
@@ -95,6 +95,7 @@ const displayController = (function () {
             gameBoard.board[1][1] = game.secondPlayer.marker;
           } else gameBoard.board[1][1] = game.firstPlayer.marker;
           winCheck();
+          drawCheck();
           break;
         case "cell6":
           if (currentPlayerTurn() === 1) {
@@ -125,8 +126,6 @@ const displayController = (function () {
           drawCheck();
       }
     });
-    winCheck();
-    drawCheck();
   };
   const winCheck = function () {
     const displayResult = document.querySelector("#displayResult");
