@@ -1,3 +1,6 @@
+const firstPlayerName = prompt("PLAYER 1 NAME ?");
+const secondPlayerName = prompt("PLAYER 2 NAME?");
+
 const gameBoard = (function () {
   const board = [];
   const row = 3;
@@ -10,25 +13,21 @@ const gameBoard = (function () {
       }
     }
   };
-  return { board, populateBoard };
-})();
 
-const gameLogic = function () {
   const firstPlayer = {
-    name: "Player1",
+    name: firstPlayerName,
     marker: "X",
   };
 
   const secondPlayer = {
-    name: "Player2",
+    name: secondPlayerName,
     marker: "O",
   };
+  return { board, populateBoard, firstPlayer, secondPlayer };
+})(firstPlayerName, secondPlayerName);
 
-  return { firstPlayer, secondPlayer };
-};
-
-const displayController = (function () {
-  const game = gameLogic();
+const gameLogic = (function () {
+  const game = gameBoard;
 
   const playerChoice = function () {
     const board = document.querySelector("#board");
@@ -152,6 +151,13 @@ const displayController = (function () {
     )
       displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
 
+    if (
+      gameBoard.board[0][2] === game.firstPlayer.marker &&
+      gameBoard.board[1][1] === game.firstPlayer.marker &&
+      gameBoard.board[2][0] === game.firstPlayer.marker
+    )
+      displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
+
     for (let i = 0; i < 3; i++) {
       if (
         gameBoard.board[i][0] === game.secondPlayer.marker &&
@@ -173,6 +179,13 @@ const displayController = (function () {
       gameBoard.board[2][2] === game.secondPlayer.marker
     )
       displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
+
+    if (
+      gameBoard.board[0][2] === game.secondPlayer.marker &&
+      gameBoard.board[1][1] === game.secondPlayer.marker &&
+      gameBoard.board[2][0] === game.secondPlayer.marker
+    )
+      displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
   };
 
   const drawCheck = function () {
@@ -186,7 +199,7 @@ const displayController = (function () {
   };
 
   return {
-    board,
+    //board,
     playerChoice,
     currentPlayerTurn,
     playerTurn,
@@ -195,8 +208,9 @@ const displayController = (function () {
     drawCheck,
   };
 })();
+
 gameBoard.populateBoard();
-displayController.playerChoice();
-displayController.fillBoard();
-displayController.winCheck();
-displayController.drawCheck();
+gameLogic.playerChoice();
+gameLogic.fillBoard();
+gameLogic.winCheck();
+gameLogic.drawCheck();
