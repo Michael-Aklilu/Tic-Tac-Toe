@@ -18,65 +18,35 @@ h1 {
   border: solid 1px black;
   text-align: center;
 }
-.firstRow {
+#playButton {
+  display: flex;
+  justify-content: center;
+  height: 3em;
+}
+button {
+  border-radius: 20px;
+  background-color: darkgoldenrod;
+  color: honeydew;
+}
+#firstRow {
   display: flex;
   height: 33%;
   width: 100%;
   border: solid 1px black;
 }
-.secondRow {
+#secondRow {
   display: flex;
   height: 33%;
   width: 100%;
   border: solid 1px black;
 }
-.thirdRow {
+#thirdRow {
   display: flex;
   height: 33%;
   width: 100%;
   border: solid 1px black;
 }
-.firstRow #cell1 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.firstRow #cell2 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.firstRow #cell3 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.secondRow #cell4 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.secondRow #cell5 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.secondRow #cell6 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.thirdRow #cell7 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.thirdRow #cell8 {
-  width: 33%;
-  height: 100%;
-  border: solid 1px black;
-}
-.thirdRow #cell9 {
+.cell {
   width: 33%;
   height: 100%;
   border: solid 1px black;
@@ -85,7 +55,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 5em;
+  height: 3em;
   font-size: 1.5em;
   font-weight: 900;
 }
