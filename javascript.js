@@ -1,5 +1,5 @@
-const firstPlayerName = prompt("PLAYER 1 NAME ?");
-const secondPlayerName = prompt("PLAYER 2 NAME?");
+const firstPlayerName = prompt("PLAYER 1 NAME ");
+const secondPlayerName = prompt("PLAYER 2 NAME ");
 
 const gameBoard = (function () {
   const board = [];
@@ -46,6 +46,7 @@ const gameLogic = (function () {
       if (!winCheck()) drawCheck();
     });
   };
+
   let playerTurn = 1;
 
   const currentPlayerTurn = function () {
@@ -136,14 +137,14 @@ const gameLogic = (function () {
         gameBoard.board[i][2] === game.firstPlayer.marker
       ) {
         displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-        endGame();
+        return;
       } else if (
         gameBoard.board[0][i] === game.firstPlayer.marker &&
         gameBoard.board[1][i] === game.firstPlayer.marker &&
         gameBoard.board[2][i] === game.firstPlayer.marker
       ) {
         displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-        endGame();
+        return;
       }
     }
 
@@ -153,7 +154,7 @@ const gameLogic = (function () {
       gameBoard.board[2][2] === game.firstPlayer.marker
     ) {
       displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-      endGame();
+      return;
     }
     if (
       gameBoard.board[0][2] === game.firstPlayer.marker &&
@@ -161,7 +162,7 @@ const gameLogic = (function () {
       gameBoard.board[2][0] === game.firstPlayer.marker
     ) {
       displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-      endGame();
+      return;
     }
     for (let i = 0; i < 3; i++) {
       if (
@@ -170,14 +171,14 @@ const gameLogic = (function () {
         gameBoard.board[i][2] === game.secondPlayer.marker
       ) {
         displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
-        endGame();
+        return;
       } else if (
         gameBoard.board[0][i] === game.secondPlayer.marker &&
         gameBoard.board[1][i] === game.secondPlayer.marker &&
         gameBoard.board[2][i] === game.secondPlayer.marker
       ) {
         displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
-        endGame();
+        return;
       }
     }
 
@@ -187,7 +188,7 @@ const gameLogic = (function () {
       gameBoard.board[2][2] === game.secondPlayer.marker
     ) {
       displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
-      endGame();
+      return;
     }
     if (
       gameBoard.board[0][2] === game.secondPlayer.marker &&
@@ -195,7 +196,7 @@ const gameLogic = (function () {
       gameBoard.board[2][0] === game.secondPlayer.marker
     ) {
       displayResult.textContent = `${game.secondPlayer.name} WINS!! GAME OVER!`;
-      endGame();
+      return;
     }
   };
 
@@ -206,22 +207,40 @@ const gameLogic = (function () {
         cell === game.firstPlayer.marker || cell === game.secondPlayer.marker
       );
     });
-    if (isDraw) displayResult.textContent = "GAME OVER! IT'S A DRAW!";
+    if (isDraw) {
+      displayResult.textContent = "GAME OVER! IT'S A DRAW!";
+    }
   };
 
-  const endGame = function () {
-    const board = document.querySelector("#board");
-    board.removeEventListener("click");
+  const playAgain = function () {
+    const button = document.querySelector("button");
+    button.addEventListener("click", () => {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          gameBoard.board[i][j] = null;
+        }
+      }
+
+      let cells = document.querySelectorAll(".cell");
+      for (let cell of cells) {
+        cell.textContent = "";
+      }
+      playerTurn = 1;
+
+      const displayResult = document.querySelector("#displayResult");
+      displayResult.textContent = "";
+
+      //const firstPlayerName = prompt("PLAYER 1 NAME ");
+      //const secondPlayerName = prompt("PLAYER 2 NAME ");
+    });
   };
 
   return {
-    //board,
     playerChoice,
-    currentPlayerTurn,
-    playerTurn,
     fillBoard,
     winCheck,
     drawCheck,
+    playAgain,
   };
 })();
 
@@ -230,3 +249,4 @@ gameLogic.playerChoice();
 gameLogic.fillBoard();
 gameLogic.winCheck();
 gameLogic.drawCheck();
+gameLogic.playAgain();
