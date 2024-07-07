@@ -1,6 +1,3 @@
-const firstPlayerName = prompt("PLAYER 1 NAME ");
-const secondPlayerName = prompt("PLAYER 2 NAME ");
-
 const gameBoard = (function () {
   const board = [];
   const row = 3;
@@ -13,6 +10,8 @@ const gameBoard = (function () {
       }
     }
   };
+  const firstPlayerName = prompt("PLAYER 1 NAME ");
+  const secondPlayerName = prompt("PLAYER 2 NAME ");
 
   const firstPlayer = {
     name: firstPlayerName,
@@ -23,8 +22,15 @@ const gameBoard = (function () {
     name: secondPlayerName,
     marker: "O",
   };
-  return { board, populateBoard, firstPlayer, secondPlayer };
-})(firstPlayerName, secondPlayerName);
+  return {
+    board,
+    populateBoard,
+    firstPlayer,
+    secondPlayer,
+    firstPlayerName,
+    secondPlayerName,
+  };
+})();
 
 const gameLogic = (function () {
   const game = gameBoard;
@@ -137,7 +143,6 @@ const gameLogic = (function () {
         gameBoard.board[i][2] === game.firstPlayer.marker
       ) {
         displayResult.textContent = `${game.firstPlayer.name} WINS!! GAME OVER!`;
-        return;
       } else if (
         gameBoard.board[0][i] === game.firstPlayer.marker &&
         gameBoard.board[1][i] === game.firstPlayer.marker &&
@@ -230,8 +235,8 @@ const gameLogic = (function () {
       const displayResult = document.querySelector("#displayResult");
       displayResult.textContent = "";
 
-      //const firstPlayerName = prompt("PLAYER 1 NAME ");
-      //const secondPlayerName = prompt("PLAYER 2 NAME ");
+      gameBoard.firstPlayer.name = prompt("PLAYER 1 NAME ");
+      gameBoard.secondPlayer.name = prompt("PLAYER 2 NAME ");
     });
   };
 
